@@ -15,9 +15,22 @@
 	</select>
 
 </div>
-<button>Find Flights</button>
+<button @onclick="Filter">Find Flights</button>
 
 <h4>Flights</h4>
+<select class="form-select">
+	@if (filter == 0)
+	{
+		<span>Loading...</span>
+	}
+	else
+	{
+		@foreach (Flight flight in flights)
+		{
+			<option>@flight</option>
+		}
+	}
+</select>
 
 <h4>Reserve</h4>
 <label>Flight code: </label>
@@ -35,8 +48,15 @@
 
 @code {
 	string[] days = { "Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-	string from = "YYC";
-	string to="YEG";
+	string from = "Any";
+	string to="Any";
 	string filterDay = "Any";
-	
+	int filter = 0;
+	List<Flight> flights;
+	private void Filter()
+	{
+		flights=FlightManager.FindFlights(from, to, filterDay);
+		filter++;
+	}
+
 }
