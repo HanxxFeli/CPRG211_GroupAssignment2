@@ -1,4 +1,5 @@
 ﻿@page "/reservation"
+@using GroupAssignment2.Data
 
 <h4>Reservation Finder</h4>
 
@@ -22,5 +23,7 @@
 
 
 @code {
+	FlightManager.FindFlights("Any", "Any", "Any");
+	
 
 }

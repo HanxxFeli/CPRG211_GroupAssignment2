@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GroupAssignment2.Data
 {
-    class Flight
+    public class Flight
     {
         public string FlightCode { get; set; }
         public string FlightName { get; set; }
@@ -27,6 +27,11 @@ namespace GroupAssignment2.Data
             Time = time;
             Seat = seat;
             Price = price;
+        }
+
+        public override string ToString()
+        {
+            return $"{FlightCode}, {FlightName}, {From}, {To}, {Day}, {Time}, {Seat}";
         }
     }
 }
