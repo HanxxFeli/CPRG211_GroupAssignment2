@@ -3,24 +3,27 @@
 @*Flight Finder dropdown*@
 <h4>Flight Finder</h4>
 
-<label>From: </label> 
-<select>
-	<option value="any">Any</option>
-	@foreach (Airport airport in airportList)
-	{
-		<option value="@airport.Code" placeholder="Any">@airport.Name</option>
-	}
-</select>
+<div class="form-group">
+	<label>From: </label>
+	<select class="form-select" @bind="from">
+		<option value="Any">Any</option>
+		@foreach (Airport airport in airportList)
+		{
+			<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+		}
+	</select>
+</div>
 
-<label>To: </label>
-<select>
-	<option value="any">Any</option>
-	@foreach (Airport airport in airportList)
-	{
-		<option value="@airport.Code" placeholder="Any">@airport.Name</option>
-	}
-</select>
-
+<div class="form-group">
+	<label>To: </label>
+	<select class="form-select" @bind="to">
+		<option value="Any">Any</option>
+		@foreach (Airport airport in airportList)
+		{
+			<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+		}
+	</select>
+</div>
 
 
 <div class="form-group">
@@ -33,13 +36,13 @@
 	</select>
 
 </div>
-<button @onclick="Filter">Find Flights</button>
+<button type="submit" class="btn btn-primary" @onclick="Filter">Find Flights</button>
 
 <h4>Flights</h4>
-<select class="form-select">
+<select class="form-select" >
 	@if (filter == 0)
 	{
-		<span>Loading...</span>
+		<option>Loading...</option>
 	}
 	else
 	{
@@ -51,13 +54,42 @@
 </select>
 
 <h4>Reserve</h4>
-<label>Flight code: </label>
-<label>Airline: </label>
-<label>Day: </label>
-<label>Time: </label>
-<label>Cost: </label>
-<label>Name: </label>
-<label>Citizenship</label>
+
+<div class="form-group">
+	<label>Flight code: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Airline: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Day: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Time: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Cost: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Name: </label>
+	<input type="text" class="form-control" />
+</div>
+
+<div class="form-group">
+	<label>Citizenship</label>
+	<input type="text" class="form-control" />
+</div>
+
 <button type="submit" class="btn btn-primary" >Reserve</button>
 
 <label>Reservation Code</label>
@@ -68,16 +100,23 @@
 	// for dropdown list of airports
 	List<Airport> airportList = AirportManager.GetAirports(); 
 	AirportManager airportManager = new AirportManager();
+
+	//for dropdown list of days
 	string[] days = { "Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+
+	//Filter attributes
 	string from = "Any";
 	string to="Any";
 	string filterDay = "Any";
 	int filter = 0;
 	List<Flight> flights;
+
+	//Calling the findFlight() method in flightmanager
 	private void Filter()
 	{
 		flights=FlightManager.FindFlights(from, to, filterDay);
 		filter++;
 	}
+
 	
 }
