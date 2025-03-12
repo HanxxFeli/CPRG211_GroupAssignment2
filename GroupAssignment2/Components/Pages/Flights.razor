@@ -3,16 +3,34 @@
 @*Flight Finder dropdown*@
 <h4>Flight Finder</h4>
 
-<label>From: </label>
+<label>From: </label> 
+<select>
+	<option value="any">Any</option>
+	@foreach (Airport airport in airportList)
+	{
+		<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+	}
+</select>
+
 <label>To: </label>
+<select>
+	<option value="any">Any</option>
+	@foreach (Airport airport in airportList)
+	{
+		<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+	}
+</select>
+
+
+
 <div class="form-group">
 	<label>Day:</label>
-	<selct class="form-select" @bind="">
-		@foreach (string day in days)
-		{
-			<option>@day</option>
-		}
-	</selct>
+	@* <selct class="form-select" @bind=""> *@
+	@* 	@foreach (string day in days) *@
+	@* 	{ *@
+	@* 		<option>@day</option> *@
+	@* 	} *@
+	@* </selct> *@
 
 </div>
 <button>Find Flights</button>
@@ -34,5 +52,6 @@
 
 
 @code {
-	
+	List<Airport> airportList = AirportManager.GetAirports(); 
+	AirportManager airportManager = new AirportManager();
 }
