@@ -1,29 +1,110 @@
 ﻿@page "/reservation"
 @using GroupAssignment2.Data
 
-<h4>Reservation Finder</h4>
+<h3>Reservation Finder</h3>
 
-<label>Code: </label>
-<label>Airline: </label>
-<label>Name: </label>
-<button>Find reservations</button>
+<div class="search-container">
+    <div class="search-item">
+        <label>Code:</label>
+        <input type="text" placeholder="Any" @bind="reservationCode" />
+    </div>
 
-<h4>Reservations</h4>
+    <div class="search-item">
+        <label>Airline:</label>
+        <select @bind="airline">
+            <option value="" disabled selected>Select...</option>
+            @foreach (string airline in FlightsManager.GetAirlines())
+            {
+                <option value=@airline>@airline</option>
+            }
+        </select>
+    </div>
 
-<h4>Reserve</h4>
-<label>Reservation code: </label>
-<label>Flight code: </label>
-<label>Airline: </label>
-<label>Cost: </label>
-<label>Name: </label>
-<label>Citizenship</label>
-<label>Status</label>
-<button>Save</button>
+    <div class="search-item">
+        <label>Name:</label>
+        <input type="text" placeholder="Any" @bind="name" />
+    </div>
+
+
+    <button class="find-button" @onclick="SearchReservation">Find reservations</button>
+</div>
+
+<div class="flights-found-field">
+    <h3>Reservations</h3>
+    @if (reservationsFound.Count == 0)
+    {
+        <span class="formatted-field">Loading...</span>
+    }
+    else
+    {
+        <select class="formatted-field" @bind="selectedReservationStr">
+            <option value="" selected disabled>Please select reservations...</option>
+            @foreach (Reservation reservation in reservationsFound)
+            {
+                <option value=@reservation.ToString()>@reservation.ToString()</option>
+            }
+        </select>
+        @if (!string.IsNullOrEmpty(selectedReservationStr))
+        {
+            UpdateSelectedReservation();
+        }
+    }
+</div>
+
+
+<h3>Reserve</h3>
+<div class="reservation-container">
+    <label>Reservation code:</label>
+    <span class="formatted-field">@reservationCodeDisplay</span>
+
+    <label>Flight code:</label>
+    <span class="formatted-field">@flightCode</span>
+
+    <label>Airline:</label>
+    <span class="formatted-field">@airlineDisplay</span>
+
+    <label>Cost:</label>
+    <span class="formatted-field">@cost</span>
+
+    <label>Name:</label>
+    <input type="text" class="formatted-field" placeholder="Name" @bind="nameDisplay">
+
+    <label>Citizenship:</label>
+    <input type="text" class="formatted-field" placeholder="Citizenship" @bind="citizenship">
+
+    <label>Status:</label>
+    <select class="formatted-field" @bind="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+    </select>
+</div>
+
+<div class="reserve-button-container">
+    <button class="reserve-button" @onclick="UpdateReservation">Save</button>
+    <span class="error">@error</span>
+</div>
+<br />
+<button @onclick="ClearReservations">Clear Reservations</button>
+<button @onclick="ShowReservations">Show Reservations</button>
 
 
 
 @code {
-	
-	
+    private string selectedReservationStr;
+    private string flightCode = "Flight Code";
+    private string airline = "";
+    private string airlineDisplay = "Airline";
+    private string cost = "Cost";
+    public string name = "";
+    private string nameDisplay = "";
+    public string citizenship = "";
+    private string reservationCode = "";
+    private string reservationCodeDisplay = "reservation code";
+    private string status = "";
+    public string error = "";
 
+    List<Flight> flights = FlightsManager.GetFlights();
+    List<Reservation> reservations = ReservationManager.GetReservations();
+    HashSet<Reservation> reservationsFound = new HashSet<Reservation>();
+    Reservation selectedReservation;
 }
