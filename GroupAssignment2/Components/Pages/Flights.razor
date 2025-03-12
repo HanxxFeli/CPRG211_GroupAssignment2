@@ -25,17 +25,30 @@
 
 <div class="form-group">
 	<label>Day:</label>
-	@* <selct class="form-select" @bind=""> *@
-	@* 	@foreach (string day in days) *@
-	@* 	{ *@
-	@* 		<option>@day</option> *@
-	@* 	} *@
-	@* </selct> *@
+	<select class="form-select" @bind="filterDay">
+		@foreach (string day in days)
+		{
+			<option>@day</option>
+		}
+	</select>
 
 </div>
-<button type="submit" class="btn btn-primary" @onclick=FindFlights>Find Flights</button>
+<button @onclick="Filter">Find Flights</button>
 
 <h4>Flights</h4>
+<select class="form-select">
+	@if (filter == 0)
+	{
+		<span>Loading...</span>
+	}
+	else
+	{
+		@foreach (Flight flight in flights)
+		{
+			<option>@flight</option>
+		}
+	}
+</select>
 
 <h4>Reserve</h4>
 <label>Flight code: </label>
@@ -52,14 +65,19 @@
 
 
 @code {
-
 	// for dropdown list of airports
 	List<Airport> airportList = AirportManager.GetAirports(); 
 	AirportManager airportManager = new AirportManager();
-
-	// for button of finding flights
-	private void FindFlights()
+	string[] days = { "Any", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+	string from = "Any";
+	string to="Any";
+	string filterDay = "Any";
+	int filter = 0;
+	List<Flight> flights;
+	private void Filter()
 	{
-		// placeholder for now
+		flights=FlightManager.FindFlights(from, to, filterDay);
+		filter++;
 	}
+	
 }
