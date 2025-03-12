@@ -5,7 +5,16 @@
 
 <label>From: </label>
 <label>To: </label>
-<label>Day: </label>
+<div class="form-group">
+	<label>Day:</label>
+	<selct class="form-select" @bind="">
+		@foreach (string day in days)
+		{
+			<option>@day</option>
+		}
+	</selct>
+
+</div>
 <button>Find Flights</button>
 
 <h4>Flights</h4>
@@ -24,6 +33,6 @@
 
 
 
-@code { 
-
+@code {
+	
 }
