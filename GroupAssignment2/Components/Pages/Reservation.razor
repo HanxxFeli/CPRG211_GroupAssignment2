@@ -71,7 +71,7 @@
 
     <label>Citizenship:</label>
     <input type="text" class="formatted-field" placeholder="Citizenship" @bind="citizenship">
-
+    <label>Name: </label>
     <label>Status:</label>
     <select class="formatted-field" @bind="status">
         <option value="Active">Active</option>
@@ -83,9 +83,6 @@
     <button class="reserve-button" @onclick="UpdateReservation">Save</button>
     <span class="error">@error</span>
 </div>
-<br />
-
-
 
 @code {
     private string selectedReservationStr;
@@ -109,8 +106,7 @@
     public void  SearchReservation()
     {
     }
-
     public void UpdateSelectedReservation() { }
 
-    public void UpdateReservation() {}
-}
+    public void UpdateReservation() { }
+ }
