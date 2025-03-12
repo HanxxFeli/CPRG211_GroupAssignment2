@@ -2,41 +2,45 @@
 
 @*Flight Finder dropdown*@
 <h4>Flight Finder</h4>
+<div class="d-flex flex-nowrap">
+	<div class="w-50">
+		<label>From: </label>
+		<select class="form-select" @bind="from">
+			<option value="Any">Any</option>
+			@foreach (Airport airport in airportList)
+			{
+				<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+			}
+		</select>
+	</div>
 
-<div class="form-group">
-	<label>From: </label>
-	<select class="form-select" @bind="from">
-		<option value="Any">Any</option>
-		@foreach (Airport airport in airportList)
-		{
-			<option value="@airport.Code" placeholder="Any">@airport.Name</option>
-		}
-	</select>
+	<div class="w-50">
+		<label>To: </label>
+		<select class="form-select" @bind="to">
+			<option value="Any">Any</option>
+			@foreach (Airport airport in airportList)
+			{
+				<option value="@airport.Code" placeholder="Any">@airport.Name</option>
+			}
+		</select>
+	</div>
+
+
+	<div class="w-50">
+		<label>Day:</label>
+		<select class="form-select" @bind="filterDay">
+			@foreach (string day in days)
+			{
+				<option>@day</option>
+			}
+		</select>
+
+	</div>
+
+		<button type="submit" class="btn btn-primary w-50" @onclick="Filter">Find Flights</button>
+	
 </div>
 
-<div class="form-group">
-	<label>To: </label>
-	<select class="form-select" @bind="to">
-		<option value="Any">Any</option>
-		@foreach (Airport airport in airportList)
-		{
-			<option value="@airport.Code" placeholder="Any">@airport.Name</option>
-		}
-	</select>
-</div>
-
-
-<div class="form-group">
-	<label>Day:</label>
-	<select class="form-select" @bind="filterDay">
-		@foreach (string day in days)
-		{
-			<option>@day</option>
-		}
-	</select>
-
-</div>
-<button type="submit" class="btn btn-primary" @onclick="Filter">Find Flights</button>
 
 <h4>Flights</h4>
 
@@ -48,7 +52,7 @@
 }
 else
 {
-	<select class="form-select" @bind="selected">
+	<select class="form-select">
 		@foreach (Flight flight in flights)
 		{
 			<option>@flight</option>
@@ -86,12 +90,12 @@ else
 
 <div class="form-group">
 	<label>Name: </label>
-	<input type="text" class="form-control" placeholder="Name" />
+	<input type="text" class="form-control" placeholder="Name" @bind="name"/>
 </div>
 
 <div class="form-group">
 	<label>Citizenship</label>
-	<input type="text" class="form-control" placeholder="Citizenship" />
+	<input type="text" class="form-control" placeholder="Citizenship" @bind="citizenship" />
 </div>
 
 <button type="submit" class="btn btn-primary" >Reserve</button>
@@ -124,5 +128,8 @@ else
 
 	//Adding content to reserve
 	Flight selected;
+	string name;
+	string citizenship;
+
 
 }
