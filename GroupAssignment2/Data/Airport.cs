@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GroupAssignment2.Data
 {
-    class Airport
-    {
+    public class Airport
+    {   
         public string Code { get; set; }
         public string Name { get; set; }
 
@@ -16,7 +16,5 @@ namespace GroupAssignment2.Data
             this.Code = code;
             this.Name = name;
         }
-
-
-    }
-}
+    } // class
+} // namespace
