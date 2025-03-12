@@ -31,7 +31,7 @@ namespace GroupAssignment2.Data
 
         public override string ToString()
         {
-            return $"{FlightCode}, {FlightName}, {From}, {To}, {Day}, {Time}, {Seat}";
+            return $"{FlightCode},{FlightName},{From},{To},{Day},{Time},{Seat},{Price}";
         }
     }
 }

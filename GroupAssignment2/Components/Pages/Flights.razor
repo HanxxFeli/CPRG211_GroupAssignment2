@@ -3,7 +3,7 @@
 @*Flight Finder dropdown*@
 <h4>Flight Finder</h4>
 <div class="d-flex flex-nowrap">
-	
+
 	<div class="w-25" style="margin-right: 10px;">
 		<label>From: </label>
 		<select class="form-select" @bind="from">
@@ -42,8 +42,8 @@
 		<button type="submit" class="btn btn-primary w-100" @onclick="Filter">Find Flights</button>
 	</div>
 
-		
-	
+
+
 </div>
 
 
@@ -57,12 +57,18 @@
 }
 else
 {
-	<select class="form-select">
+	<select class="form-select" @bind="selected">
+		<option disabled selected>Select Flight ...</option>
 		@foreach (Flight flight in flights)
 		{
 			<option>@flight</option>
 		}
 	</select>
+	if(!String.IsNullOrEmpty(selected))
+	{
+		Select();
+
+	}
 }
 
 
@@ -70,27 +76,27 @@ else
 
 <div class="form-group">
 	<label>Flight code: </label>
-	<input type="text" class="form-control" placeholder="Flight" readonly/>
+	<input type="text" class="form-control" placeholder="Flight" @bind="fCode" />
 </div>
 
 <div class="form-group">
 	<label>Airline: </label>
-	<input type="text" class="form-control" placeholder="Airline" readonly/>
+	<input type="text" class="form-control" placeholder="Airline" @bind="fName" />
 </div>
 
 <div class="form-group">
 	<label>Day: </label>
-	<input type="text" class="form-control" placeholder="Day" readonly/>
+	<input type="text" class="form-control" placeholder="Day" @bind="fDay" />
 </div>
 
 <div class="form-group">
 	<label>Time: </label>
-	<input type="text" class="form-control" placeholder="Time" readonly />
+	<input type="text" class="form-control" placeholder="Time" @bind="fTime" />
 </div>
 
 <div class="form-group">
 	<label>Cost: </label>
-	<input type="text" class="form-control" placeholder="Cost" readonly/>
+	<input type="text" class="form-control" placeholder="Cost" @bind="cost" />
 </div>
 
 <div class="form-group">
@@ -132,9 +138,24 @@ else
 	}
 
 	//Adding content to reserve
-	Flight selected;
+	string selected=null;
+	Flight selectedFlight;
+	string fCode;
+	string fName;
+	string fDay;
+	string fTime;
+	double cost;
 	string name;
 	string citizenship;
-
+	private void Select()
+	{
+		string[] parts = selected.Split(',');
+		fCode = parts[0];
+		fName = parts[1];
+		fDay = parts[4];
+		fTime = parts[5];
+		cost = Convert.ToDouble(parts[7]);
+		selectedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], Convert.ToInt32(parts[6]), Convert.ToDouble(parts[7]));
+	}
 
 }
