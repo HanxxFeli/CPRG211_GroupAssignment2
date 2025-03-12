@@ -83,6 +83,14 @@ namespace GroupAssignment2.Data
 
             return foundDayFlights;
         }
-
+        public static HashSet<string> GetAirlines()
+        {
+            HashSet<string> airlines = new HashSet<string>();
+            foreach (Flight flight in AddFlights())
+            {
+                airlines.Add(flight.FlightName);
+            }
+            return airlines;
+        }
     }
 }

@@ -13,7 +13,7 @@
         <label>Airline:</label>
         <select @bind="airline">
             <option value="" disabled selected>Select...</option>
-            @foreach (string airline in FlightsManager.GetAirlines())
+            @foreach (string airline in FlightManager.GetAirlines())
             {
                 <option value=@airline>@airline</option>
             }
@@ -71,7 +71,7 @@
 
     <label>Citizenship:</label>
     <input type="text" class="formatted-field" placeholder="Citizenship" @bind="citizenship">
-
+    <label>Name: </label>
     <label>Status:</label>
     <select class="formatted-field" @bind="status">
         <option value="Active">Active</option>
@@ -83,11 +83,6 @@
     <button class="reserve-button" @onclick="UpdateReservation">Save</button>
     <span class="error">@error</span>
 </div>
-<br />
-<button @onclick="ClearReservations">Clear Reservations</button>
-<button @onclick="ShowReservations">Show Reservations</button>
-
-
 
 @code {
     private string selectedReservationStr;
@@ -103,8 +98,15 @@
     private string status = "";
     public string error = "";
 
-    List<Flight> flights = FlightsManager.GetFlights();
-    List<Reservation> reservations = ReservationManager.GetReservations();
+    List<Flight> flights = FlightManager.AddFlights();
+    //List<Reservation> reservations = ReservationManager.GetReservations();
     HashSet<Reservation> reservationsFound = new HashSet<Reservation>();
     Reservation selectedReservation;
-}
+
+    public void  SearchReservation()
+    {
+    }
+    public void UpdateSelectedReservation() { }
+
+    public void UpdateReservation() { }
+ }
