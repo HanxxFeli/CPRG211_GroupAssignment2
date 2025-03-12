@@ -33,7 +33,7 @@
 	@* </selct> *@
 
 </div>
-<button>Find Flights</button>
+<button type="submit" class="btn btn-primary" @onclick=FindFlights>Find Flights</button>
 
 <h4>Flights</h4>
 
@@ -45,13 +45,21 @@
 <label>Cost: </label>
 <label>Name: </label>
 <label>Citizenship</label>
-<button>Reserve</button>
+<button type="submit" class="btn btn-primary" >Reserve</button>
 
 <label>Reservation Code</label>
 
 
 
 @code {
+
+	// for dropdown list of airports
 	List<Airport> airportList = AirportManager.GetAirports(); 
 	AirportManager airportManager = new AirportManager();
+
+	// for button of finding flights
+	private void FindFlights()
+	{
+		// placeholder for now
+	}
 }
