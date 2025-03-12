@@ -58,7 +58,7 @@
 else
 {
 	<select class="form-select" @bind="selected">
-		<option disabled selected>Select Flight ...</option>
+		<option disabled selected></option>
 		@foreach (Flight flight in flights)
 		{
 			<option>@flight</option>
@@ -133,12 +133,14 @@ else
 	//Calling the findFlight() method in flightmanager
 	private void Filter()
 	{
+		Clear();
 		flights=FlightManager.FindFlights(from, to, filterDay);
 		filter++;
+		
 	}
 
 	//Adding content to reserve
-	string selected=null;
+	string selected;
 	Flight selectedFlight;
 	string fCode;
 	string fName;
@@ -147,6 +149,8 @@ else
 	double cost;
 	string name;
 	string citizenship;
+
+	//Gives the fields the data and also creates a flight object of that fight 
 	private void Select()
 	{
 		string[] parts = selected.Split(',');
@@ -155,7 +159,21 @@ else
 		fDay = parts[4];
 		fTime = parts[5];
 		cost = Convert.ToDouble(parts[7]);
-		selectedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], Convert.ToInt32(parts[6]), Convert.ToDouble(parts[7]));
+		selectedFlight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], Convert.ToInt32(parts[6]), Convert.ToDouble(parts[7]));//Creation of new flight
+	}
+
+	//Method to clear the fields
+	private void Clear()
+	{
+		selected = null;
+		selectedFlight=null;
+		fCode = null;
+		fName = null;
+		fDay = null;
+		fTime = null;
+		cost = 0;
+		name = null;
+		citizenship = null;
 	}
 
 }
