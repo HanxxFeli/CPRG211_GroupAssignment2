@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GroupAssignment2.Data
@@ -10,11 +11,13 @@ namespace GroupAssignment2.Data
     public class ReservationManager
     {
         private static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\reservations.json");
-        private static List<Reservation> reservations = new List<Reservation>(); // static one copy of class 
-
-        public void MakeReservation(Flight flight, string name,string citizenship)
+        private static List<Reservation> reservations = GetReservations();// static one copy of class 
+        
+        public static void MakeReservation(string reservationCode, string name, string citizenship, Flight selectedflight)
         {
-            //reservations.Add(flight);
+            Reservation reservation = new Reservation(reservationCode, selectedflight, name, citizenship);
+            reservations.Add(reservation);
+            SaveReservations(reservations);
         }
 
         public static List<Reservation> FindReservations(string resCode, string airline="", string custName ="")
@@ -88,6 +91,16 @@ namespace GroupAssignment2.Data
             string jsonString = JsonSerializer.Serialize(res, options);
             // 3 writing to json file for reservations
             File.WriteAllText(filePath, jsonString);
+        }
+
+        public static List<Reservation> GetReservations()
+        {
+            var jsonData = File.ReadAllText(filePath);
+            if (JsonSerializer.Deserialize<List<Reservation>>(jsonData) == null)
+            {
+                throw new Exception();
+            }
+            return JsonSerializer.Deserialize<List<Reservation>>(jsonData);
         }
     }
 }
