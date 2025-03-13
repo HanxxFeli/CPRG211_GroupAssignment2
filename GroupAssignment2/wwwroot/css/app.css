@@ -102,10 +102,10 @@ h1:focus {
     position: relative;
 }
 
-input, select {
-    height: 25px;
-    margin-right: 30px;
-}
+    .search-container input, .reservation-container input, .search-item select, .reservation-container select {
+        height: 25px;
+        margin-right: 30px;
+    }
 
 .find-button {
     width: 25%;
