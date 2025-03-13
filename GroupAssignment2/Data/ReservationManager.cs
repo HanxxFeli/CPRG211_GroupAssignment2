@@ -10,9 +10,14 @@ namespace GroupAssignment2.Data
 {
     public class ReservationManager
     {
-        private static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\reservations.json");
-        private static List<Reservation> reservations = GetReservations();// static one copy of class 
+        private static string filePath = Path.Combine(FileSystem.AppDataDirectory, "reservations.json");
+        public static List<Reservation> reservations = new List<Reservation>();// static one copy of class 
         
+        public ReservationManager() 
+        {
+            PopulateReservations();
+        }
+
         public static void MakeReservation(string reservationCode, string name, string citizenship, Flight selectedflight)
         {
             Reservation reservation = new Reservation(reservationCode, selectedflight, name, citizenship);
@@ -46,8 +51,6 @@ namespace GroupAssignment2.Data
                 }
             }
             return foundByResCode;
-
-
         }
         /// <summary>
         /// Name:Enzo
@@ -93,14 +96,22 @@ namespace GroupAssignment2.Data
             File.WriteAllText(filePath, jsonString);
         }
 
-        public static List<Reservation> GetReservations()
+        public void PopulateReservations()
         {
+            if (!File.Exists(filePath))
+            {
+                File.WriteAllText(filePath, "[]");
+            }
             var jsonData = File.ReadAllText(filePath);
             if (JsonSerializer.Deserialize<List<Reservation>>(jsonData) == null)
             {
                 throw new Exception();
             }
-            return JsonSerializer.Deserialize<List<Reservation>>(jsonData);
+            reservations = JsonSerializer.Deserialize<List<Reservation>>(jsonData);
+        }
+
+        public static List<Reservation> GetReservations() {
+            return reservations;
         }
     }
 }

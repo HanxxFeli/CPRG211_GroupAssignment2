@@ -9,7 +9,7 @@ namespace GroupAssignment2.Data
     public static class FlightManager
     {
         
-        
+        //To read the flights in the flights.csv 
         public static List<Flight> AddFlights()
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\flights.csv");
@@ -31,7 +31,48 @@ namespace GroupAssignment2.Data
             }
             return flights;
         }
-        
+
+        //To write editted flights in the flights.csv file
+        public static void WriteFlight(List<Flight>flights)
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\flights.csv");
+            using (StreamWriter sw= new StreamWriter(filePath))
+            {
+                foreach (Flight f in flights)
+                {
+                    sw.WriteLine(f.ToString());
+                }
+            }
+
+        }
+
+        //Used to reduce seat number by 1 when reservation is made
+        public static void ReduceSeat(string flightCode, List<Flight>flights)
+        {
+            foreach (Flight f in flights)
+            {
+                if (f.FlightCode.Equals(flightCode))
+                {
+                    f.Seat--;
+                    break;//To stop the loop when the change is made
+                }
+            }
+        }
+
+        //Used to add seat number by 1 when a reservation is marked as inactive
+        public static void AddSeat(string flightCode, List<Flight> flights)
+        {
+            foreach (Flight f in flights)
+            {
+                if (f.FlightCode.Equals(flightCode))
+                {
+                    f.Seat++;
+                    break;//To stop the loop when the change is made
+                }
+            }
+        }
+
+        //To find flights according to departures, arrivals and day
         public static List<Flight> FindFlights(string from, string to, string day)
         {
             List<Flight> flights = FlightManager.AddFlights();
@@ -83,6 +124,7 @@ namespace GroupAssignment2.Data
 
             return foundDayFlights;
         }
+
         public static HashSet<string> GetAirlines()
         {
             HashSet<string> airlines = new HashSet<string>();

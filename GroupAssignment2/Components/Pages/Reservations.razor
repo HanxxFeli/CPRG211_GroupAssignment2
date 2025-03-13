@@ -81,7 +81,7 @@
 
 <div class="reserve-button-container">
     <button class="reserve-button" @onclick="UpdateReservation">Save</button>
-    <span class="error">@error</span>
+    <span class="error">@message</span>
 </div>
 
 @code {
@@ -96,17 +96,42 @@
     private string reservationCode = "";
     private string reservationCodeDisplay = "reservation code";
     private string status = "";
-    public string error = "";
+    public string message= "";
 
-    List<Flight> flights = FlightManager.AddFlights();
-    //List<Reservation> reservations = ReservationManager.GetReservations();
-    HashSet<Reservation> reservationsFound = new HashSet<Reservation>();
+    ReservationManager reservationManager = new ReservationManager();
+    List<Reservation> reservations = ReservationManager.GetReservations();
+    List<Reservation> reservationsFound = new List<Reservation>();
     Reservation selectedReservation;
 
     public void  SearchReservation()
     {
+        reservationsFound.Clear();
+        reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);
     }
-    public void UpdateSelectedReservation() { }
 
-    public void UpdateReservation() { }
+    public void UpdateSelectedReservation() 
+    {
+        string[] parts = selectedReservationStr.Split(",");
+        foreach (Reservation reservation in reservations)
+        {
+            if (reservation.ReservationCode == parts[0])
+            {
+                selectedReservation = reservation;
+            }
+        }
+        reservationCodeDisplay = selectedReservation.ReservationCode;
+        flightCode = selectedReservation.Flight.FlightCode;
+        airlineDisplay = selectedReservation.Flight.FlightName;
+        cost = selectedReservation.Flight.Price.ToString();
+    }
+
+    public void UpdateReservation()
+    {
+        selectedReservation.Name = nameDisplay;
+        selectedReservation.Citizenship = citizenship;
+        selectedReservation.Status = status;
+        ReservationManager.SaveReservations(reservations);
+        message = "Updated";
+    }
+
  }
