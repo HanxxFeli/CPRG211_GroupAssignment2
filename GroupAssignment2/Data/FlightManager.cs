@@ -9,7 +9,7 @@ namespace GroupAssignment2.Data
     public static class FlightManager
     {
         
-        
+        //To read the flights in the flights.csv 
         public static List<Flight> AddFlights()
         {
             string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\flights.csv");
@@ -31,7 +31,22 @@ namespace GroupAssignment2.Data
             }
             return flights;
         }
+
+        public static void WriteFlight(List<Flight>flights)
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\flights.csv");
+            using (StreamWriter sw= new StreamWriter(filePath))
+            {
+                foreach (Flight f in flights)
+                {
+                    sw.WriteLine(f.ToString());
+                }
+            }
+
+        }
+
         
+        //To find flights according to departures, arrivals and day
         public static List<Flight> FindFlights(string from, string to, string day)
         {
             List<Flight> flights = FlightManager.AddFlights();
@@ -83,6 +98,7 @@ namespace GroupAssignment2.Data
 
             return foundDayFlights;
         }
+
         public static HashSet<string> GetAirlines()
         {
             HashSet<string> airlines = new HashSet<string>();
