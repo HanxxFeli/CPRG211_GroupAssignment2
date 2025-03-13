@@ -1,0 +1,18 @@
+[
+  {
+    "ReservationCode": "Z9593",
+    "Name": "hi",
+    "Citizenship": "a",
+    "Flight": {
+      "FlightCode": "VA-9950",
+      "FlightName": "Vertical Airways",
+      "From": "YYC",
+      "To": "YEG",
+      "Day": "Monday",
+      "Time": "21:30",
+      "Seat": 50,
+      "Price": 270
+    },
+    "Status": "Active"
+  }
+]
