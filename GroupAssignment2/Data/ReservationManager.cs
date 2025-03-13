@@ -113,5 +113,37 @@ namespace GroupAssignment2.Data
         public static List<Reservation> GetReservations() {
             return reservations;
         }
+
+        public static void CheckInformation(string name, string citizenship)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship))
+            {
+                throw new Exception("All fields must not be empty");
+            }
+
+            foreach (Reservation reservation in reservations)
+            {
+                if (reservation.Name == name && reservation.Citizenship == citizenship)
+                {
+                    throw new Exception("Reservation already made!");
+                }
+            }
+        }
+
+        public static void CheckInformation(string name, string citizenship, string status, string code)
+        {
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship))
+            {
+                throw new Exception("All fields must be filled");
+            }
+
+            foreach (Reservation reservation in reservations)
+            {
+                if (reservation.Name == name && reservation.Citizenship == citizenship && reservation.ReservationCode == code && reservation.Status == status)
+                {
+                    throw new Exception("Nothing change");
+                }
+            }
+        }
     }
 }

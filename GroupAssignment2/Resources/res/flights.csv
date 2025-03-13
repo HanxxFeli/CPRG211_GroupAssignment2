@@ -1,5 +1,5 @@
 TB-4017,Try a Bus Airways,ATL,FRA,Monday,18:30,174,1444
-SL-4367,Scare Airlines,YYC,YEG,Thursday,21:30,50,270
+SL-4367,Scare Airlines,YYC,YEG,Thursday,21:30,49,270
 AL-6488,Always Late Airlines,PEK,YVR,Saturday,0:30,292,4710
 SL-9996,Scare Airlines,DFW,FRA,Sunday,21:00,255,1188
 SW-3491,Sprawl Airways,YVR,PEK,Thursday,8:30,255,1086
@@ -20,7 +20,7 @@ MA-2753,Mediocre Airlines,DEL,DXB,Saturday,9:00,174,354
 EC-6309,Error Canada,LHR,FRA,Tuesday,11:30,169,119
 AS-9371,AirShaker,YOW,HKG,Thursday,5:30,292,968
 OA-1936,Otto Airlines,PVG,HND,Wednesday,15:00,292,484
-VA-9950,Vertical Airways,YYC,YEG,Monday,21:30,49,270
+VA-9950,Vertical Airways,YYC,YEG,Monday,21:30,47,270
 GA-1232,Gypped Air,ATL,DXB,Sunday,5:15,255,1101
 TB-7564,Try a Bus Airways,YWG,YEG,Tuesday,5:15,78,442
 TB-8016,Try a Bus Airways,YVR,YYZ,Tuesday,9:45,120,351
@@ -74,7 +74,7 @@ GA-3898,Gypped Air,DXB,ORD,Monday,4:45,255,1144
 TB-5209,Try a Bus Airways,YWG,DFW,Thursday,10:00,169,823
 AS-9418,AirShaker,YEG,YUL,Monday,12:30,50,557
 ST-6699,Scaretransat,PVG,FRA,Sunday,13:30,174,2756
-CA-7550,Conned Air,YEG,YVR,Monday,0:45,50,191
+CA-7550,Conned Air,YEG,YVR,Monday,0:45,49,191
 SW-2403,Sprawl Airways,YYC,YVR,Thursday,15:00,50,183
 SL-9458,Scare Airlines,ORD,ATL,Tuesday,11:45,292,128
 MA-2387,Mediocre Airlines,DFW,LHR,Saturday,2:45,169,2064

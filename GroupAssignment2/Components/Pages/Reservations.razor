@@ -74,7 +74,7 @@
 
     <label>Status:</label>
     <select class="formatted-field" @bind="status">
-        <option value="Active">Active</option>
+        <option value="Active" selected>Active</option>
         <option value="Inactive">Inactive</option>
     </select>
 </div>
@@ -105,8 +105,16 @@
 
     public void  SearchReservation()
     {
-        reservationsFound.Clear();
-        reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);
+        try
+        {
+            reservationsFound.Clear();
+            reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);          
+        }
+        catch (Exception e)
+        {
+            message = e.Message;
+        }
+
     }
 
     public void UpdateSelectedReservation() 
@@ -127,17 +135,26 @@
 
     public void UpdateReservation()
     {
-        selectedReservation.Name = nameDisplay;
-        selectedReservation.Citizenship = citizenship;
-        selectedReservation.Status = status;
-        ReservationManager.SaveReservations(reservations);
-        if (selectedReservation.Status.Equals("Inactive"))
+        try
         {
-            List<Flight> flights = FlightManager.AddFlights();
-            FlightManager.AddSeat(selectedReservation.Flight.FlightCode, flights);
-            FlightManager.WriteFlight(flights);
+            ReservationManager.CheckInformation(nameDisplay, citizenship, status, reservationCodeDisplay);
+            selectedReservation.Name = nameDisplay;
+            selectedReservation.Citizenship = citizenship;
+            selectedReservation.Status = status;
+            ReservationManager.SaveReservations(reservations);
+            if (selectedReservation.Status.Equals("Inactive"))
+            {
+                List<Flight> flights = FlightManager.AddFlights();
+                FlightManager.AddSeat(selectedReservation.Flight.FlightCode, flights);
+                FlightManager.WriteFlight(flights);
+            }
+            message = "Updated";    
         }
-        message = "Updated";
+        catch (Exception e)
+        {
+            message = e.Message;
+        }
+
     }
 
  }
