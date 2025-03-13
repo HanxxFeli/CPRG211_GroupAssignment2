@@ -131,6 +131,12 @@
         selectedReservation.Citizenship = citizenship;
         selectedReservation.Status = status;
         ReservationManager.SaveReservations(reservations);
+        if (selectedReservation.Status.Equals("Inactive"))
+        {
+            List<Flight> flights = FlightManager.AddFlights();
+            FlightManager.AddSeat(selectedReservation.Flight.FlightCode, flights);
+            FlightManager.WriteFlight(flights);
+        }
         message = "Updated";
     }
 
