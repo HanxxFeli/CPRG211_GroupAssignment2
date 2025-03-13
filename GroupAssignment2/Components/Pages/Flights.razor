@@ -113,6 +113,8 @@
 
 
 @code {
+	List<Flight> allFlights = FlightManager.AddFlights();
+
 	// for dropdown list of airports
 	List<Airport> airportList = AirportManager.GetAirports(); 
 	AirportManager airportManager = new AirportManager();
@@ -179,6 +181,8 @@
 	private void Reserve(){
 		reservationCode = ReservationManager.GenerateReservationCode();
 		ReservationManager.MakeReservation(reservationCode, name, citizenship, selectedFlight);
+		FlightManager.ReduceSeat(selectedFlight.FlightCode, allFlights);
+		FlightManager.WriteFlight(allFlights);
 		message = "Flight reserved";
 	}
 }

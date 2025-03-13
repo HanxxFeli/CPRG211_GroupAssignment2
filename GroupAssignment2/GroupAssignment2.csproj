@@ -66,4 +66,6 @@
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
     </ItemGroup>
 
+    <ProjectExtensions><VisualStudio><UserProperties resources_4res_4reservations_1json__JsonSchema="https://blockprotocol.org/schemas/block-metadata.json" /></VisualStudio></ProjectExtensions>
+
 </Project>
