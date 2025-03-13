@@ -10,7 +10,7 @@ namespace GroupAssignment2.Data
 {
     public class ReservationManager
     {
-        private static string filePath = Path.Combine(FileSystem.AppDataDirectory, "reservations.json");
+        private static string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\Resources\Res\reservations.json");
         public static List<Reservation> reservations = new List<Reservation>();// static one copy of class 
         
         public ReservationManager() 
