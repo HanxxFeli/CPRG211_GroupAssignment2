@@ -1,17 +1,17 @@
 [
   {
-    "ReservationCode": "Z9593",
-    "Name": "hi",
-    "Citizenship": "a",
+    "ReservationCode": "K2457",
+    "Name": null,
+    "Citizenship": null,
     "Flight": {
-      "FlightCode": "VA-9950",
-      "FlightName": "Vertical Airways",
-      "From": "YYC",
+      "FlightCode": "SL-8720",
+      "FlightName": "Scare Airlines",
+      "From": "YYZ",
       "To": "YEG",
       "Day": "Monday",
-      "Time": "21:30",
-      "Seat": 50,
-      "Price": 270
+      "Time": "8:45",
+      "Seat": 120,
+      "Price": 366
     },
     "Status": "Active"
   }
