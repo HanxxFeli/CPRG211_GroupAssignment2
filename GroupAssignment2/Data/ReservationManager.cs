@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace GroupAssignment2.Data
 {
-    internal class ReservationManager
+    public class ReservationManager
     {
+        //public static string GenerateReservationCode()
+
+        //public static List<Reservation> GetReservations()
+
+        //public static void SaveReservations()  *idk if this one need any parameter*
     }
 }
