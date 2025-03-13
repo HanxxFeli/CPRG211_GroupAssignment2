@@ -121,13 +121,6 @@ namespace GroupAssignment2.Data
                 throw new Exception("All fields must not be empty");
             }
 
-            foreach (Reservation reservation in reservations)
-            {
-                if (reservation.Name == name && reservation.Citizenship == citizenship)
-                {
-                    throw new Exception("Reservation already made!");
-                }
-            }
         }
 
         public static void CheckInformation(string name, string citizenship, string status, string code)
