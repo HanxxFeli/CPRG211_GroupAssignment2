@@ -188,7 +188,7 @@
 	private void Reserve(){
 		try
 		{
-			ReservationManager.CheckInformation(name, citizenship);
+			ReservationManager.CheckInformation(name, citizenship, selectedFlight);
 			reservationCode = ReservationManager.GenerateReservationCode();
 			ReservationManager.MakeReservation(reservationCode, name, citizenship, selectedFlight);
 			FlightManager.ReduceSeat(selectedFlight.FlightCode, allFlights);

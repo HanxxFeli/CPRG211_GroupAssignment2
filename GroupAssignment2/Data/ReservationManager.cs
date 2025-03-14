@@ -110,18 +110,21 @@ namespace GroupAssignment2.Data
             return reservations;
         }
 
-        public static void CheckInformation(string name, string citizenship)
+        public static void CheckInformation(string name, string citizenship, Flight selectedFlight)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship))
             {
                 throw new Exception("All fields must not be empty");
             }
 
+            if (selectedFlight == null) {
+                throw new Exception("Please select a flight");
+            }
         }
 
         public static void CheckInformation(string name, string citizenship, string status, string code)
         {
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship) || string.IsNullOrEmpty(status))
             {
                 throw new Exception("All fields must be filled");
             }
