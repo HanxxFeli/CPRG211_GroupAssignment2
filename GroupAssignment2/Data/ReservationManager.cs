@@ -24,14 +24,20 @@ namespace GroupAssignment2.Data
             reservations.Add(reservation);
             SaveReservations(reservations);
         }
-
+        /// <summary>
+        /// Finds flights relating to search option
+        /// </summary>
+        /// <param name="resCode"></param>
+        /// <param name="airline"></param>
+        /// <param name="custName"></param>
+        /// <returns>returns appropiate list relating to search</returns>
         public static List<Reservation> FindReservations(string resCode, string airline="", string custName ="")
         {
             List<Reservation> foundByResCode = new List<Reservation>(); // list with ResCode
             List<Reservation> foundByAirline = new List<Reservation>(); // list with Airline
             List<Reservation> foundByCustName = new List<Reservation>();// list with CustName
             
-            //using ResCode
+        
             foreach(Reservation reservation in reservations)
             {
                 if(reservation.ReservationCode == resCode)
@@ -39,12 +45,12 @@ namespace GroupAssignment2.Data
                     foundByResCode.Add(reservation);
                     return foundByResCode;
                 }
-                //if(reservation.AirLine  == airline)
-                //{
-                //    foundByAirline.Add(reservation);
-                //    return foundByAirline;
-                //}
-                if(reservation.Name == custName)
+                if (reservation.Flight.FlightName == airline)
+                {
+                    foundByAirline.Add(reservation);
+                    return foundByAirline;
+                }
+                if (reservation.Name == custName)
                 {
                     foundByCustName.Add(reservation);
                     return foundByCustName;
