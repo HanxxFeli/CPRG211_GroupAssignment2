@@ -27,8 +27,9 @@ namespace GroupAssignment2.Data
                     flight = new Flight(parts[0], parts[1], parts[2], parts[3], parts[4], parts[5], Convert.ToInt32(parts[6]), Convert.ToDouble(parts[7]));
                     flights.Add(flight);
                 }
-
+                
             }
+
             return flights;
         }
 
@@ -120,6 +121,10 @@ namespace GroupAssignment2.Data
                     foundDayFlights.Add(flight);
                 }
 
+            }
+            if (foundDayFlights.Count == 0)
+            {
+                throw new Exception("No Flight was Found");
             }
 
             return foundDayFlights;

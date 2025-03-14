@@ -71,27 +71,27 @@
 <div>
 	<div class="form-group">
 		<label>Flight code: </label>
-		<input type="text" class="form-control" placeholder="Flight" @bind="fCode" readonly/>
+		<input type="text" class="form-control" placeholder="Flight Code" @bind="fCode" style="background-color:white;" readonly />
 	</div>
 
 	<div class="form-group">
 		<label>Airline: </label>
-		<input type="text" class="form-control" placeholder="Airline" @bind="fName" readonly />
+		<input type="text" class="form-control" placeholder="Airline" @bind="fName" style="background-color:white;" readonly />
 	</div>
 
 	<div class="form-group">
 		<label>Day: </label>
-		<input type="text" class="form-control" placeholder="Day" @bind="fDay" readonly/>
+		<input type="text" class="form-control" placeholder="Day" @bind="fDay" style="background-color:white;" readonly />
 	</div>
 
 	<div class="form-group">
 		<label>Time: </label>
-		<input type="text" class="form-control" placeholder="Time" @bind="fTime" readonly/>
+		<input type="text" class="form-control" placeholder="Time" @bind="fTime" style="background-color:white;" readonly />
 	</div>
 
 	<div class="form-group">
 		<label>Cost: </label>
-		<input type="text" class="form-control" placeholder="Cost" @bind="cost" readonly/>
+		<input type="text" class="form-control" placeholder="Cost" @bind="cost" style="background-color:white;" readonly />
 	</div>
 
 	<div class="form-group">
@@ -107,7 +107,7 @@
 <div class="d-flex flex-column justify-content-between align-items-center">
 	<button type="submit" class="btn btn-primary my-3" @onclick="Reserve"  style="width: 200px;">Reserve</button>
 	<label class="mb-2 fs-6" >Reservation Code: @reservationCode </label>
-	<span @bind="message"></span>
+	<span style="color: orangered" >@message</span>
 </div>
 
 
@@ -132,10 +132,17 @@
 	//Calling the findFlight() method in flightmanager
 	private void Filter()
 	{
-		Clear();
-		flights=FlightManager.FindFlights(from, to, filterDay);
-		filter++;
+		try
+		{
+			Clear();
+			flights=FlightManager.FindFlights(from, to, filterDay);
+			filter++;
 
+		}
+		catch(Exception e)
+		{
+			message = e.Message;
+		}
 	}
 
 	//Adding content to reserve
@@ -179,10 +186,18 @@
 	string message = "";
 
 	private void Reserve(){
-		reservationCode = ReservationManager.GenerateReservationCode();
-		ReservationManager.MakeReservation(reservationCode, name, citizenship, selectedFlight);
-		FlightManager.ReduceSeat(selectedFlight.FlightCode, allFlights);
-		FlightManager.WriteFlight(allFlights);
-		message = "Flight reserved";
+		try
+		{
+			ReservationManager.CheckInformation(name, citizenship);
+			reservationCode = ReservationManager.GenerateReservationCode();
+			ReservationManager.MakeReservation(reservationCode, name, citizenship, selectedFlight);
+			FlightManager.ReduceSeat(selectedFlight.FlightCode, allFlights);
+			FlightManager.WriteFlight(allFlights);
+			message = "Flight reserved";			
+		}
+		catch(Exception e)
+		{
+			message = e.Message;
+		}
 	}
 }
