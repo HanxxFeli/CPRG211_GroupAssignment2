@@ -85,7 +85,7 @@
 </div>
 
 @code {
-    private string selectedReservationStr;
+    private string selectedReservationStr; //when select flight from flightFound List
     private string flightCode = "Flight Code";
     private string airline = "";
     private string airlineDisplay = "Airline";
@@ -94,23 +94,24 @@
     private string nameDisplay = "";
     public string citizenship = "";
     private string reservationCode = "";
-    private string reservationCodeDisplay = "reservation code";
+    private string reservationCodeDisplay = "reservation code"; 
     private string originalStatus;
     private string status = "";
     public string message= "";
 
-    ReservationManager reservationManager = new ReservationManager();
+    ReservationManager reservationManager = new ReservationManager(); //populate reservations
     List<Reservation> reservations = ReservationManager.GetReservations();
     List<Reservation> reservationsFound = new List<Reservation>();
     Reservation selectedReservation;
-  
+
+    //Call FindReservation to search Reservation based on Reservation Code or Airline or Name
     public void  SearchReservation()
     {
         try
         {
-
             reservationsFound.Clear();
-            reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);          
+            reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);
+            message = "";
         }
         catch (Exception e)
         {
@@ -119,6 +120,7 @@
 
     }
 
+    //implements data of the Flight
     public void UpdateSelectedReservation() 
     {
         string[] parts = selectedReservationStr.Split(",");
@@ -136,6 +138,7 @@
         originalStatus = selectedReservation.Status;
     }
 
+    //Save reservation
     public void UpdateReservation()
     {
         try
