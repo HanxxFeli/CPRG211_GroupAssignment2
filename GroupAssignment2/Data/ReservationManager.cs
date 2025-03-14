@@ -103,10 +103,6 @@ namespace GroupAssignment2.Data
                 File.WriteAllText(filePath, "[]");
             }
             var jsonData = File.ReadAllText(filePath);
-            if (JsonSerializer.Deserialize<List<Reservation>>(jsonData) == null)
-            {
-                throw new Exception();
-            }
             reservations = JsonSerializer.Deserialize<List<Reservation>>(jsonData);
         }
 
