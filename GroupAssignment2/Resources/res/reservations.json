@@ -1,65 +1,17 @@
 [
   {
-    "ReservationCode": "X6757",
-    "Name": "hello",
-    "Citizenship": "hi",
+    "ReservationCode": "F6806",
+    "Name": "awd",
+    "Citizenship": "rfrrfg",
     "Flight": {
-      "FlightCode": "SL-4367",
-      "FlightName": "Scare Airlines",
-      "From": "YYC",
-      "To": "YEG",
+      "FlightCode": "AS-9371",
+      "FlightName": "AirShaker",
+      "From": "YOW",
+      "To": "HKG",
       "Day": "Thursday",
-      "Time": "21:30",
-      "Seat": 50,
-      "Price": 270
-    },
-    "Status": "Active"
-  },
-  {
-    "ReservationCode": "N4232",
-    "Name": "ada",
-    "Citizenship": "dadad",
-    "Flight": {
-      "FlightCode": "VA-9950",
-      "FlightName": "Vertical Airways",
-      "From": "YYC",
-      "To": "YEG",
-      "Day": "Monday",
-      "Time": "21:30",
-      "Seat": 46,
-      "Price": 270
-    },
-    "Status": "Inactive"
-  },
-  {
-    "ReservationCode": "G0397",
-    "Name": "adad",
-    "Citizenship": "sdsdsd",
-    "Flight": {
-      "FlightCode": "VA-9950",
-      "FlightName": "Vertical Airways",
-      "From": "YYC",
-      "To": "YEG",
-      "Day": "Monday",
-      "Time": "21:30",
-      "Seat": 47,
-      "Price": 270
-    },
-    "Status": "Active"
-  },
-  {
-    "ReservationCode": "A8304",
-    "Name": "ad",
-    "Citizenship": "ddda",
-    "Flight": {
-      "FlightCode": "CA-7550",
-      "FlightName": "Conned Air",
-      "From": "YEG",
-      "To": "YVR",
-      "Day": "Monday",
-      "Time": "0:45",
-      "Seat": 50,
-      "Price": 191
+      "Time": "5:30",
+      "Seat": 292,
+      "Price": 968
     },
     "Status": "Active"
   }
