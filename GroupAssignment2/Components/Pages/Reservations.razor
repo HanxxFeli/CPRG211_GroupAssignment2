@@ -95,6 +95,7 @@
     public string citizenship = "";
     private string reservationCode = "";
     private string reservationCodeDisplay = "reservation code";
+    private string originalStatus;
     private string status = "";
     public string message= "";
 
@@ -102,11 +103,12 @@
     List<Reservation> reservations = ReservationManager.GetReservations();
     List<Reservation> reservationsFound = new List<Reservation>();
     Reservation selectedReservation;
-
+  
     public void  SearchReservation()
     {
         try
         {
+
             reservationsFound.Clear();
             reservationsFound = ReservationManager.FindReservations(reservationCode, airline, name);          
         }
@@ -131,6 +133,7 @@
         flightCode = selectedReservation.Flight.FlightCode;
         airlineDisplay = selectedReservation.Flight.FlightName;
         cost = selectedReservation.Flight.Price.ToString();
+        originalStatus = selectedReservation.Status;
     }
 
     public void UpdateReservation()
@@ -142,13 +145,23 @@
             selectedReservation.Citizenship = citizenship;
             selectedReservation.Status = status;
             ReservationManager.SaveReservations(reservations);
-            if (selectedReservation.Status.Equals("Inactive"))
+            if (!selectedReservation.Status.Equals(originalStatus))
             {
-                List<Flight> flights = FlightManager.AddFlights();
-                FlightManager.AddSeat(selectedReservation.Flight.FlightCode, flights);
-                FlightManager.WriteFlight(flights);
+                if (selectedReservation.Status.Equals("Inactive"))
+                {
+                    List<Flight> flights = FlightManager.AddFlights();
+                    FlightManager.AddSeat(selectedReservation.Flight.FlightCode, flights);
+                    FlightManager.WriteFlight(flights);
+                }
+                else if (selectedReservation.Status.Equals("Active"))
+                {
+                    List<Flight> flights = FlightManager.AddFlights();
+                    FlightManager.ReduceSeat(selectedReservation.Flight.FlightCode, flights);
+                    FlightManager.WriteFlight(flights);
+                }
             }
             message = "Updated";    
+            
         }
         catch (Exception e)
         {

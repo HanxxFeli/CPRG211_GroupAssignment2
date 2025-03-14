@@ -193,6 +193,7 @@
 			ReservationManager.MakeReservation(reservationCode, name, citizenship, selectedFlight);
 			FlightManager.ReduceSeat(selectedFlight.FlightCode, allFlights);
 			FlightManager.WriteFlight(allFlights);
+			Clear();
 			message = "Flight reserved";			
 		}
 		catch(Exception e)
