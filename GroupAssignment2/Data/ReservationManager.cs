@@ -18,12 +18,25 @@ namespace GroupAssignment2.Data
             PopulateReservations();
         }
 
+        public static List<Reservation> GetReservations()
+        {
+            return reservations;
+        }
+
+        /// <summary>
+        /// Make a new reservation
+        /// </summary>
+        /// <param name="reservationCode"></param>
+        /// <param name="name"></param>
+        /// <param name="citizenship"></param>
+        /// <param name="selectedflight"></param>
         public static void MakeReservation(string reservationCode, string name, string citizenship, Flight selectedflight)
         {
             Reservation reservation = new Reservation(reservationCode, selectedflight, name, citizenship);
             reservations.Add(reservation);
             SaveReservations(reservations);
         }
+
         /// <summary>
         /// Finds flights relating to search option
         /// </summary>
@@ -42,24 +55,17 @@ namespace GroupAssignment2.Data
             {
                 if(reservation.ReservationCode == resCode)
                 {
-                    try
+                    if (reservation.ReservationCode == resCode && reservation.Flight.FlightName != airline)
                     {
-                        if (reservation.ReservationCode == resCode && reservation.Flight.FlightName != airline)
-                        {
-                            return null;
-                        }
-                        else
-                        {
-                            foundByResCode.Add(reservation);
-                            return foundByResCode;
-                        }
+                        throw new Exception("No Matches");
                     }
-                    catch (Exception e)
+                    else
                     {
-                        throw new Exception("No Matches" +e.Message);
+                        foundByResCode.Add(reservation);
+                        return foundByResCode;
                     }
                 }
-                if (reservation.Flight.FlightName == airline)
+                if (reservation.Flight.FlightName == airline && reservation.ReservationCode == resCode)
                 {
                     foundByAirline.Add(reservation);
                     return foundByAirline;
@@ -124,10 +130,6 @@ namespace GroupAssignment2.Data
             }
             var jsonData = File.ReadAllText(filePath);
             reservations = JsonSerializer.Deserialize<List<Reservation>>(jsonData);
-        }
-
-        public static List<Reservation> GetReservations() {
-            return reservations;
         }
 
         public static void CheckInformation(string name, string citizenship, Flight selectedFlight)
