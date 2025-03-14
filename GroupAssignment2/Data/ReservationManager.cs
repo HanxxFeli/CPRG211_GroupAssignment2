@@ -42,8 +42,22 @@ namespace GroupAssignment2.Data
             {
                 if(reservation.ReservationCode == resCode)
                 {
-                    foundByResCode.Add(reservation);
-                    return foundByResCode;
+                    try
+                    {
+                        if (reservation.ReservationCode == resCode && reservation.Flight.FlightName != airline)
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            foundByResCode.Add(reservation);
+                            return foundByResCode;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("No Matches" +e.Message);
+                    }
                 }
                 if (reservation.Flight.FlightName == airline)
                 {
