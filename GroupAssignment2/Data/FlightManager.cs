@@ -130,6 +130,7 @@ namespace GroupAssignment2.Data
             return foundDayFlights;
         }
 
+        //for dropdown list to select airline in Reservations.razor
         public static HashSet<string> GetAirlines()
         {
             HashSet<string> airlines = new HashSet<string>();

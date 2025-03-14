@@ -78,6 +78,7 @@ namespace GroupAssignment2.Data
             }
             return foundByResCode;
         }
+
         /// <summary>
         /// Name:Enzo
         /// Generates Reservation Code When Called
@@ -105,6 +106,7 @@ namespace GroupAssignment2.Data
             string randomCode = random.ToString();
             return randomCode;
         }
+
         /// <summary>
         /// Name:Enzo
         /// takes list of reservations objects
@@ -132,6 +134,13 @@ namespace GroupAssignment2.Data
             reservations = JsonSerializer.Deserialize<List<Reservation>>(jsonData);
         }
 
+        /// <summary>
+        /// check all data in Flight.razor fields before making new reservation
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="citizenship"></param>
+        /// <param name="selectedFlight"></param>
+        /// <exception cref="Exception"></exception>
         public static void CheckInformation(string name, string citizenship, Flight selectedFlight)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship))
@@ -144,6 +153,14 @@ namespace GroupAssignment2.Data
             }
         }
 
+        /// <summary>
+        /// check all data in Reservations.razor before updating Reservation
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="citizenship"></param>
+        /// <param name="status"></param>
+        /// <param name="code"></param>
+        /// <exception cref="Exception"></exception>
         public static void CheckInformation(string name, string citizenship, string status, string code)
         {
             if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(citizenship) || string.IsNullOrEmpty(status))
