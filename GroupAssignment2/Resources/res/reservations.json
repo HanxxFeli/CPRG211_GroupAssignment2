@@ -1,50 +1,34 @@
 [
   {
-    "ReservationCode": "C1947",
-    "Name": "asd",
-    "Citizenship": "dasd",
+    "ReservationCode": "C5259",
+    "Name": "Kunj",
+    "Citizenship": "India",
     "Flight": {
-      "FlightCode": "SL-4367",
-      "FlightName": "Scare Airlines",
+      "FlightCode": "SW-6172",
+      "FlightName": "Sprawl Airways",
+      "From": "YVR",
+      "To": "YWG",
+      "Day": "Saturday",
+      "Time": "21:30",
+      "Seat": 76,
+      "Price": 317
+    },
+    "Status": "Active"
+  },
+  {
+    "ReservationCode": "C2756",
+    "Name": "a",
+    "Citizenship": "d",
+    "Flight": {
+      "FlightCode": "VA-9950",
+      "FlightName": "Vertical Airways",
       "From": "YYC",
       "To": "YEG",
-      "Day": "Thursday",
+      "Day": "Monday",
       "Time": "21:30",
-      "Seat": 48,
+      "Seat": 46,
       "Price": 270
     },
-    "Status": "Inactive"
-  },
-  {
-    "ReservationCode": "A7295",
-    "Name": "Kunj",
-    "Citizenship": "iindian",
-    "Flight": {
-      "FlightCode": "SL-7980",
-      "FlightName": "Scare Airlines",
-      "From": "YYC",
-      "To": "HND",
-      "Day": "Tuesday",
-      "Time": "22:00",
-      "Seat": 174,
-      "Price": 1301
-    },
-    "Status": "Inactive"
-  },
-  {
-    "ReservationCode": "A9051",
-    "Name": "hansio0",
-    "Citizenship": "Iand",
-    "Flight": {
-      "FlightCode": "OA-8419",
-      "FlightName": "Otto Airlines",
-      "From": "FRA",
-      "To": "PEK",
-      "Day": "Friday",
-      "Time": "16:45",
-      "Seat": 255,
-      "Price": 474
-    },
-    "Status": "Inactive"
+    "Status": "Active"
   }
 ]

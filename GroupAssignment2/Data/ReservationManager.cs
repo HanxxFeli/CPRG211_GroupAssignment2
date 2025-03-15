@@ -44,39 +44,50 @@ namespace GroupAssignment2.Data
         /// <param name="airline"></param>
         /// <param name="custName"></param>
         /// <returns>returns appropiate list relating to search</returns>
-        public static List<Reservation> FindReservations(string resCode, string airline="", string custName ="")
+        public static List<Reservation> FindReservations(string resCode, string airline, string custName ="")
         {
             List<Reservation> foundByResCode = new List<Reservation>(); // list with ResCode
             List<Reservation> foundByAirline = new List<Reservation>(); // list with Airline
             List<Reservation> foundByCustName = new List<Reservation>();// list with CustName
-            
-        
-            foreach(Reservation reservation in reservations)
+            foreach(Reservation r in reservations)
             {
-                if(reservation.ReservationCode == resCode)
+                if (resCode.Equals("Any"))
                 {
-                    if (reservation.ReservationCode == resCode && reservation.Flight.FlightName != airline)
-                    {
-                        throw new Exception("No Matches");
-                    }
-                    else
-                    {
-                        foundByResCode.Add(reservation);
-                        return foundByResCode;
-                    }
+                    foundByResCode.Add(r);
                 }
-                if (reservation.Flight.FlightName == airline && reservation.ReservationCode == resCode)
+                else if (r.ReservationCode.Equals(resCode))
                 {
-                    foundByAirline.Add(reservation);
-                    return foundByAirline;
-                }
-                if (reservation.Name == custName)
-                {
-                    foundByCustName.Add(reservation);
-                    return foundByCustName;
+                    foundByResCode.Add(r);
                 }
             }
-            return foundByResCode;
+            foreach (Reservation r in foundByResCode)
+            {
+                if (airline.Equals("Any"))
+                {
+                    foundByAirline.Add(r);
+                }
+                else if (r.Flight.FlightName.Equals(airline))
+                {
+                    foundByAirline.Add(r);
+                }
+            }
+            foreach (Reservation r in foundByAirline)
+            {
+                if (custName.Equals("Any"))
+                {
+                    foundByCustName.Add(r);
+                }
+                else if (r.Name.Equals(custName))
+                {
+                    foundByCustName.Add(r);
+                }
+            }
+            if (foundByCustName.Count() == 0)
+            {
+                throw new Exception("No Matches");
+            }
+            
+            return foundByCustName;
         }
         /// <summary>
         /// Name:Enzo
