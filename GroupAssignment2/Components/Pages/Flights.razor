@@ -131,7 +131,7 @@
 	string to="Any";
 	string filterDay = "Any";
 	int filter = 0;
-	List<Flight> flights;
+	List<Flight> flights = new List<Flight>();
 
 	//Calling the findFlight() method in flightmanager
 	private void Filter()
@@ -139,6 +139,7 @@
 		try
 		{
 			Clear();
+			flights.Clear();
 			flights=FlightManager.FindFlights(from, to, filterDay);
 			filter++;
 			message = "";

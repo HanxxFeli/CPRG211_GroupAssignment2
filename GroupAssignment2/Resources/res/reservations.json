@@ -1,65 +1,17 @@
 [
   {
-    "ReservationCode": "F6806",
-    "Name": "enzo",
-    "Citizenship": "canadaian",
+    "ReservationCode": "C1947",
+    "Name": "asd",
+    "Citizenship": "dasd",
     "Flight": {
-      "FlightCode": "AS-9371",
-      "FlightName": "AirShaker",
-      "From": "YOW",
-      "To": "HKG",
-      "Day": "Thursday",
-      "Time": "5:30",
-      "Seat": 292,
-      "Price": 968
-    },
-    "Status": "Inactive"
-  },
-  {
-    "ReservationCode": "I5888",
-    "Name": "yoyo",
-    "Citizenship": "qqq",
-    "Flight": {
-      "FlightCode": "TB-9298",
-      "FlightName": "Try a Bus Airways",
-      "From": "YWG",
-      "To": "YEG",
-      "Day": "Monday",
-      "Time": "5:15",
-      "Seat": 78,
-      "Price": 442
-    },
-    "Status": "Active"
-  },
-  {
-    "ReservationCode": "W0667",
-    "Name": "Hi",
-    "Citizenship": "Hi",
-    "Flight": {
-      "FlightCode": "VA-9950",
-      "FlightName": "Vertical Airways",
+      "FlightCode": "SL-4367",
+      "FlightName": "Scare Airlines",
       "From": "YYC",
       "To": "YEG",
-      "Day": "Monday",
+      "Day": "Thursday",
       "Time": "21:30",
-      "Seat": 47,
+      "Seat": 48,
       "Price": 270
-    },
-    "Status": "Inactive"
-  },
-  {
-    "ReservationCode": "S0088",
-    "Name": "test",
-    "Citizenship": "candian",
-    "Flight": {
-      "FlightCode": "TB-4017",
-      "FlightName": "Try a Bus Airways",
-      "From": "ATL",
-      "To": "FRA",
-      "Day": "Monday",
-      "Time": "18:30",
-      "Seat": 174,
-      "Price": 1444
     },
     "Status": "Active"
   }
