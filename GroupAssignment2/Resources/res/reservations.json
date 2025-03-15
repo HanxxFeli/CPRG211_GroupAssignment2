@@ -46,5 +46,21 @@
       "Price": 270
     },
     "Status": "Inactive"
+  },
+  {
+    "ReservationCode": "S0088",
+    "Name": "test",
+    "Citizenship": "candian",
+    "Flight": {
+      "FlightCode": "TB-4017",
+      "FlightName": "Try a Bus Airways",
+      "From": "ATL",
+      "To": "FRA",
+      "Day": "Monday",
+      "Time": "18:30",
+      "Seat": 174,
+      "Price": 1444
+    },
+    "Status": "Active"
   }
 ]
