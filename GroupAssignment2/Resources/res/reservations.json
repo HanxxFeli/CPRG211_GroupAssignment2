@@ -1,16 +1,16 @@
 [
   {
-    "ReservationCode": "C1947",
-    "Name": "asd",
-    "Citizenship": "dasd",
+    "ReservationCode": "D0295",
+    "Name": "ad",
+    "Citizenship": "ds",
     "Flight": {
-      "FlightCode": "SL-4367",
-      "FlightName": "Scare Airlines",
+      "FlightCode": "VA-9950",
+      "FlightName": "Vertical Airways",
       "From": "YYC",
       "To": "YEG",
-      "Day": "Thursday",
+      "Day": "Monday",
       "Time": "21:30",
-      "Seat": 48,
+      "Seat": 47,
       "Price": 270
     },
     "Status": "Active"
