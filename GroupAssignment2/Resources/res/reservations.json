@@ -1,8 +1,8 @@
 [
   {
-    "ReservationCode": "D0295",
-    "Name": "ad",
-    "Citizenship": "ds",
+    "ReservationCode": "U2755",
+    "Name": "Tam",
+    "Citizenship": "fafa",
     "Flight": {
       "FlightCode": "VA-9950",
       "FlightName": "Vertical Airways",
@@ -10,55 +10,8 @@
       "To": "YEG",
       "Day": "Monday",
       "Time": "21:30",
-      "Seat": 47,
+      "Seat": 46,
       "Price": 270
-    },
-    "Status": "Active"
-  },
-  {
-    "ReservationCode": "C2761",
-    "Name": "dddd",
-    "Citizenship": "aaaa",
-    "Flight": {
-      "FlightCode": "SL-4367",
-      "FlightName": "Scare Airlines",
-      "From": "YYC",
-      "To": "YEG",
-      "Day": "Thursday",
-      "Time": "21:30",
-      "Seat": 47,
-      "Price": 270
-    },
-    "Status": "Inactive"
-  },
-  {
-<<<<<<< HEAD
-    "ReservationCode": "A4379",
-    "Name": "asdsadadsa",
-    "Citizenship": "aadadadad",
-    "Flight": {
-      "FlightCode": "SL-4367",
-      "FlightName": "Scare Airlines",
-      "From": "YYC",
-      "To": "YEG",
-      "Day": "Thursday",
-      "Time": "21:30",
-      "Seat": 47,
-      "Price": 270
-=======
-    "ReservationCode": "A7295",
-    "Name": "Kunj",
-    "Citizenship": "iindian",
-    "Flight": {
-      "FlightCode": "SL-7980",
-      "FlightName": "Scare Airlines",
-      "From": "YYC",
-      "To": "HND",
-      "Day": "Tuesday",
-      "Time": "22:00",
-      "Seat": 174,
-      "Price": 1301
->>>>>>> 5126eb9c2d9cff53b8f13e0230952628b8d54240
     },
     "Status": "Inactive"
   }
